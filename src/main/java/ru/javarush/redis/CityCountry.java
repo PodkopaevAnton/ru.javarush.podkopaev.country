@@ -1,9 +1,6 @@
 package ru.javarush.redis;
 
-import ru.javarush.entity.City;
 import ru.javarush.entity.Continent;
-import ru.javarush.entity.Country;
-import ru.javarush.entity.CountryLanguage;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -122,7 +119,7 @@ public class CityCountry {
         this.countryPopulation = countryPopulation;
     }
 
-    public Set<Language> getLanguages() {
+    Set<Language> getLanguages() {
         return languages;
     }
 

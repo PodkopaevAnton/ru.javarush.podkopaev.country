@@ -5,7 +5,6 @@ import org.hibernate.query.Query;
 import ru.javarush.entity.City;
 
 import java.util.List;
-import java.util.Optional;
 
 public class CityDao implements CityDaoImpl{
     private final SessionFactory sessionFactory;
@@ -29,9 +28,9 @@ public class CityDao implements CityDaoImpl{
     }
 
     @Override
-    public Optional<City> getById(Integer id) {
+    public City getById(Integer id) {
         Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = :ID", City.class);
         query.setParameter("ID",id);
-        return Optional.ofNullable(query.getSingleResult());
+        return query.getSingleResult();
     }
 }
