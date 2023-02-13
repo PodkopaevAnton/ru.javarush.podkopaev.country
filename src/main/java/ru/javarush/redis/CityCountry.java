@@ -1,6 +1,8 @@
 package ru.javarush.redis;
 
+import ru.javarush.entity.City;
 import ru.javarush.entity.Continent;
+import ru.javarush.entity.Country;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -125,5 +127,22 @@ public class CityCountry {
 
     public void setLanguages(Set<Language> languages) {
         this.languages = languages;
+    }
+
+    public void setCountry(Country country){
+        setAlternativeCountryCode(country.getAlternativeCode());
+        setContinent(country.getContinent());
+        setCountryCode(country.getCode());
+        setCountryName(country.getName());
+        setCountryPopulation(country.getPopulation());
+        setCountryRegion(country.getRegion());
+        setCountrySurfaceArea(country.getSurfaceArea());
+    }
+
+    public void setCity(City city){
+        setId(city.getId());
+        setName(city.getName());
+        setPopulation(city.getPopulation());
+        setDistrict(city.getDistrict());
     }
 }

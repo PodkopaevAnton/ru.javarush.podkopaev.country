@@ -1,5 +1,7 @@
 package ru.javarush.redis;
 
+import ru.javarush.entity.CountryLanguage;
+
 import java.math.BigDecimal;
 
 public class Language {
@@ -29,5 +31,11 @@ public class Language {
 
     public void setPercentage(BigDecimal percentage) {
         this.percentage = percentage;
+    }
+
+    public void setCountryLanguage(CountryLanguage countryLanguage){
+        setLanguage(countryLanguage.getLanguage());
+        setOfficial(countryLanguage.getOfficial());
+        setPercentage(countryLanguage.getPercentage());
     }
 }

@@ -1,36 +1,15 @@
 package ru.javarush.dao;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import ru.javarush.entity.City;
 
 import java.util.List;
+import java.util.Optional;
 
-public class CityDao implements CityDaoImpl{
-    private final SessionFactory sessionFactory;
+public interface CityDao {
 
-    public CityDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    List<City> getItems(int offset, int limit);
 
-    @Override
-    public List<City> getItems(int offset, int limit) {
-        Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c", City.class);
-        query.setMaxResults(limit);
-        query.setFirstResult(offset);
-        return query.list();
-    }
+    int getTotalCount();
 
-    @Override
-    public int getTotalCount() {
-        Query<Long> query = sessionFactory.getCurrentSession().createQuery("select count(c) from City c", Long.class);
-        return Math.toIntExact(query.uniqueResult());
-    }
-
-    @Override
-    public City getById(Integer id) {
-        Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = :ID", City.class);
-        query.setParameter("ID",id);
-        return query.getSingleResult();
-    }
+    Optional<City> getById(Integer id);
 }
