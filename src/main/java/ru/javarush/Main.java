@@ -35,13 +35,4 @@ public class Main {
         sqlClient.shutdown();
         redisClient.shutdown();
     }
-
-//    public static void shutdown(SqlClient sqlClient, RdsClient rdsClient) {
-//        if (nonNull(sqlClient.getSessionFactory())) {
-//            sqlClient.getSessionFactory().close();
-//        }
-//        if (nonNull(rdsClient.getRedisClient())) {
-//            rdsClient.getRedisClient().shutdown();
-//        }
-//    }
 }
