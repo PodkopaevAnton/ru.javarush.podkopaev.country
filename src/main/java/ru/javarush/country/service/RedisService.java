@@ -1,22 +1,23 @@
-package ru.javarush.service;
+package ru.javarush.country.service;
 
+import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisStringCommands;
-import ru.javarush.redis.CityCountry;
+import ru.javarush.country.redis.CityCountry;
 
 import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-public class RdsClient implements DataTestService {
+public class RedisService implements DataTestService {
     private final RedisClient redisClient;
     private final ObjectMapper mapper;
 
-    public RdsClient(){
+    public RedisService(){
         redisClient = prepareRedisClient();
         mapper = new ObjectMapper();
     }
@@ -57,6 +58,7 @@ public class RdsClient implements DataTestService {
         }
     }
 
+    @Override
     public void shutdown() {
         if (nonNull(redisClient)) {
             redisClient.close();

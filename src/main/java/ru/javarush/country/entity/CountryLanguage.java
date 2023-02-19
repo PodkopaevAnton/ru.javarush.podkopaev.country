@@ -1,4 +1,4 @@
-package ru.javarush.entity;
+package ru.javarush.country.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 @Table(name = "country_language",schema = "world")
@@ -72,5 +73,30 @@ public class CountryLanguage {
 
     public void setPercentage(BigDecimal percentage) {
         this.percentage = percentage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CountryLanguage that)) return false;
+        return Objects.equals(country.getName(), that.getCountry().getName())
+                && Objects.equals(language, that.getLanguage())
+                && Objects.equals(isOfficial, that.getOfficial())
+                && Objects.equals(percentage, that.getPercentage());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(language, isOfficial, percentage);
+    }
+
+    @Override
+    public String toString() {
+        return "CountryLanguage{" +
+                "country=" + country.getName() +
+                ", language='" + language + '\'' +
+                ", isOfficial=" + isOfficial +
+                ", percentage=" + percentage +
+                '}';
     }
 }

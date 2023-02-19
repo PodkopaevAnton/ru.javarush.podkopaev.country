@@ -1,15 +1,15 @@
-package ru.javarush.dao;
+package ru.javarush.country.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import ru.javarush.entity.Country;
+import ru.javarush.country.entity.Country;
 
 import java.util.List;
 
-public class CountryDaoImpl implements CountryDao {
+public class HibernateCountryDao implements CountryDao {
     private final SessionFactory sessionFactory;
 
-    public CountryDaoImpl(SessionFactory sessionFactory) {
+    public HibernateCountryDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 

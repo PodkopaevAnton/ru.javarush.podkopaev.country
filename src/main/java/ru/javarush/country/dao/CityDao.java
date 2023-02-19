@@ -1,6 +1,6 @@
-package ru.javarush.dao;
+package ru.javarush.country.dao;
 
-import ru.javarush.entity.City;
+import ru.javarush.country.entity.City;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package ru.javarush.entity;
+package ru.javarush.country.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +14,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -209,5 +210,40 @@ public class Country {
 
     public void setLanguages(Set<CountryLanguage> languages) {
         this.languages = languages;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Country country)) return false;
+        return  Objects.equals(code, country.getCode())
+                && Objects.equals(alternativeCode, country.getAlternativeCode())
+                && Objects.equals(name, country.getName())
+                && Objects.equals(region, country.getRegion())
+                && Objects.equals(surfaceArea, country.getSurfaceArea())
+                && Objects.equals(independentYear, country.getIndependentYear())
+                && Objects.equals(population, country.getPopulation())
+                && Objects.equals(localName, country.getLocalName())
+                && Objects.equals(capital.getName(), country.getCapital().getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, alternativeCode, name, region, surfaceArea, independentYear, population, localName, governmentForm, capital.getName());
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", region='" + region + '\'' +
+                ", surfaceArea=" + surfaceArea +
+                ", independentYear=" + independentYear +
+                ", population=" + population +
+                ", lifeExpectancy=" + lifeExpectancy +
+                ", localName='" + localName + '\'' +
+                ", capital=" + capital.getName() +
+                '}';
     }
 }

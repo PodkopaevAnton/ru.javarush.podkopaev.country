@@ -1,36 +1,26 @@
-package ru.javarush.redis;
+package ru.javarush.country.redis;
 
-import ru.javarush.entity.City;
-import ru.javarush.entity.Continent;
-import ru.javarush.entity.Country;
+import ru.javarush.country.entity.City;
+import ru.javarush.country.entity.Continent;
+import ru.javarush.country.entity.Country;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Set;
 
 public class CityCountry {
 
     private Integer id;
-
     private String name;
-
     private String district;
-
     private Integer population;
-
     private String countryCode;
-
     private String alternativeCountryCode;
-
     private String countryName;
-
     private Continent continent;
-
     private String countryRegion;
-
     private BigDecimal countrySurfaceArea;
-
     private Integer countryPopulation;
-
     private Set<Language> languages;
 
     public Integer getId() {
@@ -144,5 +134,40 @@ public class CityCountry {
         setName(city.getName());
         setPopulation(city.getPopulation());
         setDistrict(city.getDistrict());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CityCountry that)) return false;
+        return Objects.equals(name, that.name)
+                && Objects.equals(district, that.district)
+                && Objects.equals(population, that.population)
+                && Objects.equals(countryCode, that.countryCode)
+                && Objects.equals(alternativeCountryCode, that.alternativeCountryCode)
+                && Objects.equals(countryName, that.countryName)
+                && Objects.equals(countryRegion, that.countryRegion)
+                && Objects.equals(countrySurfaceArea, that.countrySurfaceArea)
+                && Objects.equals(countryPopulation, that.countryPopulation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id);
+    }
+
+    @Override
+    public String toString() {
+        return "CityCountry{" +
+                "name='" + name + '\'' +
+                ", district='" + district + '\'' +
+                ", population=" + population +
+                ", countryCode='" + countryCode + '\'' +
+                ", alternativeCountryCode='" + alternativeCountryCode + '\'' +
+                ", countryName='" + countryName + '\'' +
+                ", countryRegion='" + countryRegion + '\'' +
+                ", countrySurfaceArea=" + countrySurfaceArea +
+                ", countryPopulation=" + countryPopulation +
+                '}';
     }
 }

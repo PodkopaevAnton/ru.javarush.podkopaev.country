@@ -1,16 +1,17 @@
-package ru.javarush.dao;
+package ru.javarush.country.dao;
 
+import jakarta.persistence.NoResultException;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import ru.javarush.entity.City;
+import ru.javarush.country.entity.City;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CityDaoImpl implements CityDao {
+public class HibernateCityDao implements CityDao {
     private final SessionFactory sessionFactory;
 
-    public CityDaoImpl(SessionFactory sessionFactory) {
+    public HibernateCityDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
@@ -30,8 +31,14 @@ public class CityDaoImpl implements CityDao {
 
     @Override
     public Optional<City> getById(Integer id) {
-        Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = :ID", City.class);
-        query.setParameter("ID",id);
-        return Optional.of(query.getSingleResult());
+        Query<City> query = sessionFactory.getCurrentSession()
+                .createQuery("select c from City c join fetch c.country where c.id = :ID", City.class);
+        query.setParameter("ID", id);
+        try {
+            City city = query.getSingleResult();
+            return Optional.ofNullable(city);
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
     }
 }

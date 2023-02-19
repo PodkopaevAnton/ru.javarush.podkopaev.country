@@ -1,17 +1,16 @@
-package ru.javarush.service;
+package ru.javarush.country.service;
 
-import ru.javarush.entity.City;
-import ru.javarush.entity.Country;
-import ru.javarush.entity.CountryLanguage;
-import ru.javarush.redis.CityCountry;
-import ru.javarush.redis.Language;
+import ru.javarush.country.entity.City;
+import ru.javarush.country.entity.Country;
+import ru.javarush.country.entity.CountryLanguage;
+import ru.javarush.country.redis.CityCountry;
+import ru.javarush.country.redis.Language;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class DataTransformer implements CityTransformer{
-    @Override
+public class DataTransformer {
     public List<CityCountry> transformCityData(List<City> cities) {
         return cities.stream().map(city -> {
             CityCountry res = new CityCountry();

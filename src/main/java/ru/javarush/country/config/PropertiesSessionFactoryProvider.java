@@ -1,12 +1,12 @@
-package ru.javarush.config;
+package ru.javarush.country.config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.javarush.entity.City;
-import ru.javarush.entity.Country;
-import ru.javarush.entity.CountryLanguage;
+import ru.javarush.country.entity.City;
+import ru.javarush.country.entity.Country;
+import ru.javarush.country.entity.CountryLanguage;
 
-public class PropertiesSessionFactoryProvider implements SessionFactoryProvider{
+public class PropertiesSessionFactoryProvider implements SessionFactoryProvider {
     @Override
     public SessionFactory getSessionFactory() {
         return new Configuration()
