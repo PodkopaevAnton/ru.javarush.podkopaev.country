@@ -7,5 +7,5 @@ you will have a world schema with three tables
 4) Run Redis server as a docker container:
 docker run -d --name redis -p 6379:6379 redis:latest
 5) Set your username and password in hibernate.properties
-6) Run Main
+6) Run Application
 7) The console will show the difference in getting data by id using radis and directly through MySQL
