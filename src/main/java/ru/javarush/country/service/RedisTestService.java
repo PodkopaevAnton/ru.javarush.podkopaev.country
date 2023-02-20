@@ -1,6 +1,5 @@
 package ru.javarush.country.service;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lettuce.core.RedisClient;
@@ -13,11 +12,11 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-public class RedisService implements DataTestService {
+public class RedisTestService implements DataTestService {
     private final RedisClient redisClient;
     private final ObjectMapper mapper;
 
-    public RedisService(){
+    public RedisTestService(){
         redisClient = prepareRedisClient();
         mapper = new ObjectMapper();
     }
@@ -37,7 +36,7 @@ public class RedisService implements DataTestService {
                 try {
                     sync.set(String.valueOf(cityCountry.getId()),mapper.writeValueAsString(cityCountry));
                 }catch (JsonProcessingException e){
-                    e.printStackTrace();
+                    throw new RuntimeException(e.getMessage());
                 }
             }
         }
@@ -52,7 +51,7 @@ public class RedisService implements DataTestService {
                 try {
                     mapper.readValue(value, CityCountry.class);
                 } catch (JsonProcessingException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e.getMessage());
                 }
             }
         }

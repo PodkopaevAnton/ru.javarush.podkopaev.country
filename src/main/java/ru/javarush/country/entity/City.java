@@ -76,7 +76,8 @@ public class City {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof City city)) return false;
-        return Objects.equals(name, city.getName())
+        return  Objects.equals(id, city.getId())
+                && Objects.equals(name, city.getName())
                 && Objects.equals(country.getName(), city.getCountry().getName())
                 && Objects.equals(district, city.getDistrict())
                 && Objects.equals(population, city.getPopulation());
@@ -84,7 +85,7 @@ public class City {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, getCountry().getName(), district, population);
+        return Objects.hash(name, country.getName(), district, population);
     }
 
     @Override

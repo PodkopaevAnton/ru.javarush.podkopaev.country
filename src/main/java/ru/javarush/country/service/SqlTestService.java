@@ -17,12 +17,12 @@ import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
-public class SqlService implements DataTestService {
+public class SqlTestService implements DataTestService {
     private final SessionFactory sessionFactory;
     private final CityDao cityDao;
     private final CountryDao countryDao;
     private static final int DATA_FETCH_STEP = 500;
-    public SqlService(){
+    public SqlTestService(){
         PropertiesSessionFactoryProvider properties = new PropertiesSessionFactoryProvider();
         sessionFactory = properties.getSessionFactory();
         cityDao = new HibernateCityDao(sessionFactory);

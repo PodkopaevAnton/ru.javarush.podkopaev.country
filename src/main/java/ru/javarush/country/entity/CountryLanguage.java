@@ -79,7 +79,8 @@ public class CountryLanguage {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CountryLanguage that)) return false;
-        return Objects.equals(country.getName(), that.getCountry().getName())
+        return  Objects.equals(id, that.getId())
+                && Objects.equals(country.getName(), that.getCountry().getName())
                 && Objects.equals(language, that.getLanguage())
                 && Objects.equals(isOfficial, that.getOfficial())
                 && Objects.equals(percentage, that.getPercentage());

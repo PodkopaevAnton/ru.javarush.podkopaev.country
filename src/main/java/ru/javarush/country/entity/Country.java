@@ -216,7 +216,8 @@ public class Country {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Country country)) return false;
-        return  Objects.equals(code, country.getCode())
+        return  Objects.equals(id, country.getId())
+                && Objects.equals(code, country.getCode())
                 && Objects.equals(alternativeCode, country.getAlternativeCode())
                 && Objects.equals(name, country.getName())
                 && Objects.equals(region, country.getRegion())

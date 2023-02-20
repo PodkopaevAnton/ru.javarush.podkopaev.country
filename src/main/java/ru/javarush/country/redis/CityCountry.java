@@ -140,14 +140,15 @@ public class CityCountry {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CityCountry that)) return false;
-        return Objects.equals(name, that.name)
-                && Objects.equals(district, that.district)
-                && Objects.equals(population, that.population)
-                && Objects.equals(countryCode, that.countryCode)
-                && Objects.equals(alternativeCountryCode, that.alternativeCountryCode)
-                && Objects.equals(countryName, that.countryName)
-                && Objects.equals(countryRegion, that.countryRegion)
-                && Objects.equals(countrySurfaceArea, that.countrySurfaceArea)
+        return  Objects.equals(id, that.getId())
+                && Objects.equals(name, that.getName())
+                && Objects.equals(district, that.getDistrict())
+                && Objects.equals(population, that.getPopulation())
+                && Objects.equals(countryCode, that.getCountryCode())
+                && Objects.equals(alternativeCountryCode, that.getAlternativeCountryCode())
+                && Objects.equals(countryName, that.getCountryCode())
+                && Objects.equals(countryRegion, that.getCountryRegion())
+                && Objects.equals(countrySurfaceArea, that.getCountrySurfaceArea())
                 && Objects.equals(countryPopulation, that.countryPopulation);
     }
 
